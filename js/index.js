@@ -48,16 +48,33 @@ window.onload = () => {
 };
 
 const startGame = () => {
-    let time = document.querySelector(".time").value * 60;
+    // display Changes
     const menu = document.querySelector("#menu");
     menu.style.display = "none";
     const gameDisplay = document.querySelector("#game");
     gameDisplay.style.display = "block";
+
+    // timer Initialization
+    let time = document.querySelector(".time").value * 60;
     const timer = new Timer(time);
+
+    // wiresModule initialization
     let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
-    const wiresModule = new WiresModule(numberOfWires);
+    let serialNumber = randomizeSerialNumber();
+    const wiresModule = new WiresModule(4, serialNumber);
+
+    // game Initialization
     const game = new Game(time, modules, timer, wiresModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
     game.wiresModule.setCorrectWire();
+};
+
+const randomizeSerialNumber = () => {
+    let randomString;
+    do {
+        randomString = Math.random().toString(36).slice(-5);
+    } while (randomString.split("").every((e) => typeof e === "number"));
+    randomString += Math.floor(Math.random() * 10);
+    return randomString;
 };
