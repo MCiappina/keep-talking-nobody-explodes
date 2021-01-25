@@ -6,11 +6,16 @@ class Timer {
     startTimer(callback) {
         this.intervalId = setInterval(() => {
             callback();
-            this.currentTime--;
+            this.currentTime -= 1;
             if (this.currentTime === 0) {
-                clearInterval(this.intervalId);
+                this.stopTimer();
+                callback();
             }
         }, 1000);
+    }
+
+    stopTimer() {
+        clearInterval(this.intervalId);
     }
 
     getMinutes() {
@@ -23,8 +28,8 @@ class Timer {
         return String(num).padStart(2, "0");
     }
     printSplit() {
-        let minutes = this.twoDigitNumber(this.getMinutes());
-        let seconds = this.twoDigitNumber(this.getSeconds());
+        let minutes = this.twoDigitsNumber(this.getMinutes());
+        let seconds = this.twoDigitsNumber(this.getSeconds());
         console.log(`${minutes}:${seconds}`);
         return `${minutes}:${seconds}`;
     }
