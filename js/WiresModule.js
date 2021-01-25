@@ -31,7 +31,7 @@ class WiresModule {
                 } else if (this.wires[2].color === "white") {
                     this.wires[2].correctWire = true;
                     console.log("second condition procced");
-                } else if (isWireColorUnique(copyArray, "blue")) {
+                } else if (has2WiresOfColor(copyArray, "blue")) {
                     console.log("third condition procced");
                     let indexOfLastBlue = copyArray
                         .map((e) => e.color)
@@ -44,7 +44,7 @@ class WiresModule {
                 break;
             case 4:
                 if (
-                    isWireColorUnique(copyArray, "red") &&
+                    has2WiresOfColor(copyArray, "red") &&
                     isSerialNumberOdd(this.serialNumber)
                 ) {
                     console.log("first condition procced");
@@ -52,6 +52,9 @@ class WiresModule {
                     this.wires[indexOfLastRed].correctWire = true;
                 } else if (this.wires[3].color === "yellow" && noRedWires(copyArray)) {
                     console.log("second condition procced");
+                    this.wires[0].correctWire = true;
+                } else if (hasOnlyOneOfColor(copyArray, "blue")) {
+                    console.log("third condition procced");
                     this.wires[0].correctWire = true;
                 }
         }
@@ -66,7 +69,7 @@ class Wire {
     }
 }
 
-const isWireColorUnique = (array, color) => {
+const has2WiresOfColor = (array, color) => {
     return (
         array.map((e) => e.color).indexOf(color) !==
         array.map((e) => e.color).lastIndexOf(color)
@@ -79,4 +82,8 @@ const isSerialNumberOdd = (serialNumber) => {
 
 const noRedWires = (array) => {
     return array.every((e) => e.color !== "red");
+};
+
+const hasOnlyOneOfColor = (array, color) => {
+    return array.filter((e) => e.color === color).length == 1;
 };

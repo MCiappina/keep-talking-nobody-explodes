@@ -61,7 +61,7 @@ const startGame = () => {
     // wiresModule initialization
     let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
     let serialNumber = randomizeSerialNumber();
-    const wiresModule = new WiresModule(3, serialNumber);
+    const wiresModule = new WiresModule(4, serialNumber);
 
     // game Initialization
     const game = new Game(time, modules, timer, wiresModule);
