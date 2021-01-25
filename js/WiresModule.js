@@ -56,6 +56,9 @@ class WiresModule {
                 } else if (hasOnlyOneOfColor(copyArray, "blue")) {
                     console.log("third condition procced");
                     this.wires[0].correctWire = true;
+                } else if (has2WiresOfColor(copyArray, "yellow")) {
+                    console.log("fourth condition procced");
+                    this.wires[3].correctWire = true;
                 }
         }
         console.log(this.wires);
