@@ -2,7 +2,7 @@
 
 // serial number
 
-const colors = ["blue", "red"];
+const colors = ["blue", "red", "yellow", "black", "white"];
 
 class WiresModule {
     constructor(numberOfWires, serialNumber) {
@@ -25,7 +25,7 @@ class WiresModule {
         console.log(this.serialNumber);
         switch (this.numberOfWires) {
             case 3:
-                if (this.wires.every((e) => e.color !== "red")) {
+                if (noRedWires(copyArray)) {
                     this.wires[1].correctWire = true;
                     console.log("first condition procced");
                 } else if (this.wires[2].color === "white") {
@@ -50,6 +50,9 @@ class WiresModule {
                     console.log("first condition procced");
                     let indexOfLastRed = copyArray.map((e) => e.color).lastIndexOf("red");
                     this.wires[indexOfLastRed].correctWire = true;
+                } else if (this.wires[3].color === "yellow" && noRedWires(copyArray)) {
+                    console.log("second condition procced");
+                    this.wires[0].correctWire = true;
                 }
         }
         console.log(this.wires);
@@ -72,4 +75,8 @@ const isWireColorUnique = (array, color) => {
 
 const isSerialNumberOdd = (serialNumber) => {
     return serialNumber[serialNumber.length - 1] % 2 !== 0;
+};
+
+const noRedWires = (array) => {
+    return array.every((e) => e.color !== "red");
 };
