@@ -25,21 +25,21 @@ class WiresModule {
         console.log(this.serialNumber);
         switch (this.numberOfWires) {
             case 3:
-                if (noRedWires(copyArray)) {
+                if (noWiresOfColor(copyArray, "red")) {
                     this.wires[1].correctWire = true;
-                    console.log("first condition procced");
-                } else if (this.wires[2].color === "white") {
+                    console.log("3 wires first condition procced");
+                } else if (isLastWireColor(copyArray, "white")) {
                     this.wires[2].correctWire = true;
-                    console.log("second condition procced");
+                    console.log("3 wires second condition procced");
                 } else if (has2WiresOfColor(copyArray, "blue")) {
-                    console.log("third condition procced");
+                    console.log("3 wires third condition procced");
                     let indexOfLastBlue = copyArray
                         .map((e) => e.color)
                         .lastIndexOf("blue");
                     this.wires[indexOfLastBlue].correctWire = true;
                 } else {
                     this.wires[2].correctWire = true;
-                    console.log("fourth condition procced");
+                    console.log("3 wires fourth condition procced");
                 }
                 break;
             case 4:
@@ -47,18 +47,45 @@ class WiresModule {
                     has2WiresOfColor(copyArray, "red") &&
                     isSerialNumberOdd(this.serialNumber)
                 ) {
-                    console.log("first condition procced");
+                    console.log("4 wires first condition procced");
                     let indexOfLastRed = copyArray.map((e) => e.color).lastIndexOf("red");
                     this.wires[indexOfLastRed].correctWire = true;
-                } else if (this.wires[3].color === "yellow" && noRedWires(copyArray)) {
-                    console.log("second condition procced");
+                } else if (
+                    isLastWireColor(copyArray, "yellow") &&
+                    noWiresOfColor(copyArray, "red")
+                ) {
+                    console.log("4 wires second condition procced");
                     this.wires[0].correctWire = true;
                 } else if (hasOnlyOneOfColor(copyArray, "blue")) {
-                    console.log("third condition procced");
+                    console.log("4 wires third condition procced");
                     this.wires[0].correctWire = true;
                 } else if (has2WiresOfColor(copyArray, "yellow")) {
-                    console.log("fourth condition procced");
+                    console.log("4 wires fourth condition procced");
                     this.wires[3].correctWire = true;
+                } else {
+                    console.log("4 wires fifth condition procced");
+                    this.wires[1].correctWire = true;
+                }
+                break;
+            case 5:
+                if (
+                    isLastWireColor(copyArray, "black") &&
+                    isSerialNumberOdd(this.serialNumber)
+                ) {
+                    console.log("5 wires first condition procced");
+                    this.wires[3].correctWire = true;
+                } else if (
+                    hasOnlyOneOfColor(copyArray, "red") &&
+                    has2WiresOfColor(copyArray, "yellow")
+                ) {
+                    console.log("5 wires second condition procced");
+                    this.wires[0].correctWire = true;
+                } else if (noWiresOfColor(copyArray, "black")) {
+                    console.log("5 wires third condition procced");
+                    this.wires[1].correctWire = true;
+                } else {
+                    console.log("5 wires fourth condition procced");
+                    this.wires[0].correctWire = true;
                 }
         }
         console.log(this.wires);
@@ -83,10 +110,14 @@ const isSerialNumberOdd = (serialNumber) => {
     return serialNumber[serialNumber.length - 1] % 2 !== 0;
 };
 
-const noRedWires = (array) => {
-    return array.every((e) => e.color !== "red");
+const noWiresOfColor = (array, color) => {
+    return array.every((e) => e.color !== color);
 };
 
 const hasOnlyOneOfColor = (array, color) => {
     return array.filter((e) => e.color === color).length == 1;
+};
+
+const isLastWireColor = (array, color) => {
+    return array[array.length - 1].color === color;
 };
