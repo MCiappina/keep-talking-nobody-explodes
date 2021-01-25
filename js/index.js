@@ -6,12 +6,13 @@ let secDec = document.getElementById("secDec");
 let secUni = document.getElementById("secUni");
 
 class Game {
-    constructor(time, modules, timer) {
+    constructor(time, modules, timer, wiresModule) {
         this.mistakes = 0;
         this.victoryPoints = 0;
         this.time = time;
         this.modules = modules;
         this.timer = timer;
+        this.wiresModule = wiresModule;
     }
 
     //todo gameover
@@ -53,6 +54,10 @@ const startGame = () => {
     const gameDisplay = document.querySelector("#game");
     gameDisplay.style.display = "block";
     const timer = new Timer(time);
-    const game = new Game(time, modules, timer);
+    let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
+    const wiresModule = new WiresModule(3);
+    const game = new Game(time, modules, timer, wiresModule);
     game.timer.startTimer(game.printTime);
+    game.wiresModule.makeWires();
+    game.wiresModule.setCorrectWire();
 };
