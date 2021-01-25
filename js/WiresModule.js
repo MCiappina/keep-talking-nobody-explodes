@@ -87,6 +87,27 @@ class WiresModule {
                     console.log("5 wires fourth condition procced");
                     this.wires[0].correctWire = true;
                 }
+                break;
+            case 6:
+                if (
+                    noWiresOfColor(copyArray, "yellow") &&
+                    isSerialNumberOdd(this.serialNumber)
+                ) {
+                    console.log("6 wires first condition procced");
+                    this.wires[2].correctWire = true;
+                } else if (
+                    hasOnlyOneOfColor(copyArray, "yellow") &&
+                    has2WiresOfColor(copyArray, "white")
+                ) {
+                    console.log("6 wires second condition procced");
+                    this.wires[3].correctWire = true;
+                } else if (noWiresOfColor(copyArray, "red")) {
+                    console.log("6 wires third condition procced");
+                    this.wires[5].correctWire = true;
+                } else {
+                    console.log("6 wires fourth condition procced");
+                    this.wires[3].correctWire = true;
+                }
         }
         console.log(this.wires);
     }
