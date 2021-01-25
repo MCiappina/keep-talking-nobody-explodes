@@ -2,7 +2,7 @@
 
 // serial number
 
-const colors = ["blue", "yellow", "red", "white", "black"];
+const colors = ["blue", "red"];
 
 class WiresModule {
     constructor(numberOfWires) {
@@ -22,8 +22,25 @@ class WiresModule {
     setCorrectWire() {
         switch (this.numberOfWires) {
             case 3:
+                let copyArray = [...this.wires];
                 if (this.wires.every((e) => e.color !== "red")) {
                     this.wires[1].correctWire = true;
+                    console.log("first condition procced");
+                } else if (this.wires[2].color === "white") {
+                    this.wires[2].correctWire = true;
+                    console.log("second condition procced");
+                } else if (
+                    copyArray.map((e) => e.color).indexOf("blue") !==
+                    copyArray.map((e) => e.color).lastIndexOf("blue")
+                ) {
+                    console.log("third condition procced");
+                    let indexOfLastBlue = copyArray
+                        .map((e) => e.color)
+                        .lastIndexOf("blue");
+                    this.wires[indexOfLastBlue].correctWire = true;
+                } else {
+                    this.wires[2].correctWire = true;
+                    console.log("fourth condition procced");
                 }
         }
         console.log(this.wires);

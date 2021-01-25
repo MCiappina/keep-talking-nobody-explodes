@@ -55,7 +55,7 @@ const startGame = () => {
     gameDisplay.style.display = "block";
     const timer = new Timer(time);
     let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
-    const wiresModule = new WiresModule(3);
+    const wiresModule = new WiresModule(numberOfWires);
     const game = new Game(time, modules, timer, wiresModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
