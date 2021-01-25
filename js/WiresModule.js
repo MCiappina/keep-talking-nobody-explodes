@@ -45,7 +45,7 @@ class WiresModule {
             case 4:
                 if (
                     isWireColorUnique(copyArray, "red") &&
-                    this.serialNumber[this.serialNumber.length - 1] % 2 !== 0
+                    isSerialNumberOdd(this.serialNumber)
                 ) {
                     console.log("first condition procced");
                     let indexOfLastRed = copyArray.map((e) => e.color).lastIndexOf("red");
@@ -68,4 +68,8 @@ const isWireColorUnique = (array, color) => {
         array.map((e) => e.color).indexOf(color) !==
         array.map((e) => e.color).lastIndexOf(color)
     );
+};
+
+const isSerialNumberOdd = (serialNumber) => {
+    return serialNumber[serialNumber.length - 1] % 2 !== 0;
 };
