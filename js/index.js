@@ -107,7 +107,16 @@ class Game {
         backDisplay.appendChild(serialNumberDiv);
     };
 
-    renderBatteries = () => {};
+    renderBatteries = () => {
+        const backDisplay = document.getElementById("game-back");
+        const batteries = this.buttonModule.batteries;
+        for (let i = 0; i < batteries; i++) {
+            console.log("hey");
+            const batteryDiv = document.createElement("div");
+            batteryDiv.classList.add("battery");
+            backDisplay.appendChild(batteryDiv);
+        }
+    };
 
     printTime = () => {
         this.printMinutes();
@@ -172,6 +181,8 @@ const startGame = () => {
     game.buttonModule.setHoldThreshold();
     game.renderButton();
     game.renderStrip();
+    game.renderSerialNumber();
+    game.renderBatteries();
 };
 
 const randomizeSerialNumber = () => {

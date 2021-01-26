@@ -3,6 +3,11 @@
     justify-content: space-around;
 }
 
+#game-back {
+    display: flex;
+    justify-content: space-around;
+}
+
 .blue {
     border: 1px solid black;
     background: blue;
@@ -49,4 +54,11 @@
 .strip {
     height: 100px;
     width: 200px;
+}
+
+.battery {
+    height: 200px;
+    width: 100px;
+    background: orange;
+    border: 1px solid black;
 }
