@@ -45,3 +45,8 @@
     justify-content: center;
     align-items: center;
 }
+
+.strip {
+    height: 100px;
+    width: 200px;
+}

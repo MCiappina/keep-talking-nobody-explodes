@@ -10,16 +10,17 @@ const wordsList = ["ABORTAR", "DETONAR", "SEGURA", "APERTA"];
 //  e tem q ser menor q o threshold e maior que 0 nos casos de soltar imediatamente
 class ButtonModule {
     constructor(batteries, indicator) {
-        this.color = "";
-        this.word = "";
         this.batteries = batteries;
         this.indicator = indicator;
+        this.color = "";
+        this.strip = "";
+        this.word = "";
         this.holdCounter = "";
         this.holdThreshold = "";
+        this.stripCondition = "";
     }
     makeButton() {
         this.randomizeButtonColor();
-        this.randomizeStripColor();
         this.randomizeWord();
         console.log(this);
     }
@@ -32,25 +33,48 @@ class ButtonModule {
         return div;
     }
 
-    setCorrectCondition() {
+    setHoldThreshold() {
         if (buttonIsColor(this, "blue") && buttonSays(this, "ABORTAR")) {
             console.log("button first condition procced");
             this.holdThreshold = -1;
+            this.randomizeStripColor();
         } else if (hasMoreThanXBattery(this, 1) && buttonSays(this, "DETONAR")) {
             console.log("button second condition procced");
             this.holdThreshold = 1500;
         } else if (buttonIsColor(this, "white") && litIndicatorLabel(this, "CAR")) {
             console.log("button third condition procced");
             this.holdThreshold = -1;
+            this.randomizeStripColor();
         } else if (hasMoreThanXBattery(this, 2) && litIndicatorLabel(this, "FRK")) {
             console.log("button fourth condition procced");
             this.holdThreshold = 1500;
         } else if (buttonIsColor(this, "yellow")) {
             console.log("button fifth condition procced");
             this.holdThreshold = -1;
+            this.randomizeStripColor();
         } else {
             console.log("button sixth condition procced");
             this.holdThreshold = -1;
+            this.randomizeStripColor();
+        }
+    }
+
+    setStripCondition() {
+        if (this.strip) {
+            switch (this.strip) {
+                case "blue":
+                    this.stripCondition = 4;
+                    break;
+                case "white":
+                    this.stripCondition = 1;
+                    break;
+                case "yellow":
+                    this.stripCondition = 5;
+                    break;
+                default:
+                    this.stripCondition = 1;
+                    break;
+            }
         }
     }
 
@@ -60,7 +84,7 @@ class ButtonModule {
     }
     randomizeStripColor() {
         let colorsStripIndex = Math.floor(Math.random() * colorsStrip.length);
-        this.color = colorsStrip[colorsStripIndex];
+        this.strip = colorsStrip[colorsStripIndex];
     }
 
     randomizeWord() {

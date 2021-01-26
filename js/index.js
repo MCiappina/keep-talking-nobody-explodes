@@ -84,6 +84,20 @@ class Game {
         buttonModule.appendChild(button);
     };
 
+    // condiçao pra aparecer o render strip = o counter tem q ser maior q zero além do hold threshold === -1
+    // o counter só vai ser maior q 0 quando estiver sendo segurado, quando for solto vai virar 0, ou seja, strip só aparece quando clica e segura
+    // renderStrip dentro do eventhandler
+    renderStrip = () => {
+        if (this.buttonModule.holdThreshold !== -1) {
+            return null;
+        }
+        const buttonModule = document.querySelector(".button-module");
+        const strip = document.createElement("div");
+        strip.classList.add(this.buttonModule.strip);
+        strip.classList.add("strip");
+        buttonModule.appendChild(strip);
+    };
+
     renderSerialNumber = () => {};
 
     renderBatteries = () => {};
@@ -148,8 +162,9 @@ const startGame = () => {
     game.wiresModule.setCorrectWire();
     game.renderWires();
     game.buttonModule.makeButton();
-    game.buttonModule.setCorrectCondition();
+    game.buttonModule.setHoldThreshold();
     game.renderButton();
+    game.renderStrip();
 };
 
 const randomizeSerialNumber = () => {
