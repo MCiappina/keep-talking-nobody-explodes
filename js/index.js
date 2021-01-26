@@ -90,7 +90,6 @@ class Game {
         const mouseDownHandler = () => {
             interval = setInterval(() => {
                 this.buttonModule.holdCounter++;
-                console.log(this.buttonModule.holdCounter);
             }, 1);
             console.log("mouse up fired");
             if (this.buttonModule.stripCondition) {
@@ -100,15 +99,35 @@ class Game {
         // TODO randomizeStripcolor method fora da inicializaçao do botao
         const mouseUpHandler = () => {
             clearInterval(interval);
-            if (
-                this.buttonModule.holdCounter < this.buttonModule.holdThreshold &&
-                !this.buttonModule.stripCondition
-            ) {
-                this.victoryPoints++;
-                console.log(`victory: ${this.victoryPoints}`);
-                button.removeEventListener("mousedown", mouseDownHandler);
-                button.removeEventListener("mouseup", mouseUpHandler);
-                this.checkGameover();
+            if (!this.buttonModule.stripCondition) {
+                if (this.buttonModule.holdCounter < this.buttonModule.holdThreshold) {
+                    this.victoryPoints++;
+                    console.log(`victory: ${this.victoryPoints}`);
+                    button.removeEventListener("mousedown", mouseDownHandler);
+                    button.removeEventListener("mouseup", mouseUpHandler);
+                    this.checkGameover();
+                } else {
+                    this.mistakes++;
+                    console.log(`mistakes: ${this.mistakes}`);
+                    this.checkGameover();
+                }
+            } else {
+                let string = this.printMinutes() + this.printSeconds();
+                if (
+                    string
+                    .split("")
+                    .map((e) => Number(e))
+                    .includes(this.buttonModule.stripCondition)
+                ) {
+                    this.victoryPoints++;
+                    console.log(`victory: ${this.victoryPoints}`);
+                    button.removeEventListener("mousedown", mouseDownHandler);
+                    button.removeEventListener("mouseup", mouseUpHandler);
+                    this.checkGameover();
+                } else {
+                    this.mistakes++;
+                    console.log(`mistakes: ${this.mistakes}`);
+                }
             }
             this.buttonModule.holdCounter = 0;
             this.clearStrip();
