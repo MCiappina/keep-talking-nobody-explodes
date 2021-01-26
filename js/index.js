@@ -74,7 +74,8 @@ class Game {
 }
 
 window.onload = () => {
-    document.getElementById("start").onclick = () => {
+    document.getElementById("start").onsubmit = (e) => {
+        e.preventDefault();
         startGame();
     };
 };

@@ -23,12 +23,14 @@
           ></span
         >
       </p>
-      <h2>Set the bomb timer and number of modules:</h2>
-      <label for="time">Time:</label>
-      <input type="number" class="time" value="" />
-      <label for="modules">Number of Modules</label>
-      <input type="number" class="modules" />
-      <button id="start">Start Game</button>
+      <form id="start" action="#">
+        <h2>Set the bomb timer and number of modules:</h2>
+        <label for="time">Time:</label>
+        <input name="time" type="number" class="time" required />
+        <label for="modules">Number of Modules</label>
+        <input name="modules" type="number" class="modules" required />
+        <button type="submit">Start Game</button>
+      </form>
     </div>
 
     <div id="game">
