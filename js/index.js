@@ -5,6 +5,8 @@ let minUni = document.getElementById("minUni");
 let secDec = document.getElementById("secDec");
 let secUni = document.getElementById("secUni");
 
+// todo how to make more than one module render
+
 class Game {
     constructor(time, modules, timer, wiresModule) {
         this.mistakes = 0;
@@ -18,16 +20,13 @@ class Game {
     //todo gameover
 
     checkGameover = () => {
-        if (!this.timer.currentTime) {
+        if (!this.timer.currentTime || this.mistakes === 3) {
             this.timer.stopTimer();
-            console.log("game over");
-        }
-        if (this.mistakes === 3) {
             console.log("game over");
         }
     };
 
-    // todo disable all event handlers when hitting the right one
+    // todo disable all event handlers when hitting the right wire;
 
     renderWires = () => {
         const gameDisplay = document.querySelector("#game");
@@ -40,6 +39,11 @@ class Game {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
                     wireDiv.removeEventListener("click", handler);
+                    let wireList = document.querySelectorAll(".wire");
+                    for (let i = 0; i < wireList.length; i++) {
+                        let elClone = wireList[i].cloneNode(true);
+                        wireList[i].parentNode.replaceChild(elClone, wireList[i]);
+                    }
                 } else {
                     this.mistakes++;
                     console.log(`mistakes ${this.mistakes}`);
