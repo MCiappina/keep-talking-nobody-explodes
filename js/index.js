@@ -202,6 +202,7 @@ const startGame = () => {
     game.buttonModule.makeButton();
     game.buttonModule.setHoldThreshold();
     game.renderButton();
+    // ATENÇÃO renderStrip é pra estar no event handler do click do mouse
     game.renderStrip();
     game.renderSerialNumber();
     game.renderBatteries();

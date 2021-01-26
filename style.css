@@ -9,37 +9,34 @@
 }
 
 .blue {
-    border: 1px solid black;
     background: blue;
 }
 
 .yellow {
-    border: 1px solid black;
     background: yellow;
 }
 
 .red {
-    border: 1px solid black;
     background: red;
 }
 
 .black {
-    border: 1px solid black;
     background: black;
 }
 
 .white {
-    border: 1px solid black;
     background: white;
 }
 
 .wire {
+    border: 1px solid black;
     width: 200px;
     height: 100px;
     margin: 10px 0;
 }
 
 .button {
+    border: 1px solid black;
     font-size: 15px;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -51,7 +48,13 @@
     align-items: center;
 }
 
+.button:hover,
+.wire:hover {
+    border: 5px solid orange;
+}
+
 .strip {
+    border: 1px solid black;
     height: 100px;
     width: 200px;
 }
