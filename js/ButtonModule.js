@@ -13,7 +13,7 @@ class ButtonModule {
         this.batteries = batteries;
         this.indicator = indicator;
         this.color = "";
-        this.strip = "";
+        this.strip = "black";
         this.word = "";
         this.holdCounter = "";
         this.holdThreshold = "";
@@ -52,8 +52,11 @@ class ButtonModule {
             console.log("button fifth condition procced");
             this.holdThreshold = -1;
             this.randomizeStripColor();
-        } else {
+        } else if (buttonIsColor(this, "red") && buttonSays(this, "SEGURA")) {
             console.log("button sixth condition procced");
+            this.holdThreshold = 1500;
+        } else {
+            console.log("button seventh condition procced");
             this.holdThreshold = -1;
             this.randomizeStripColor();
         }
