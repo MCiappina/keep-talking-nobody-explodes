@@ -36,6 +36,13 @@ class Game {
         if (!this.timer.currentTime || this.mistakes === 3) {
             this.timer.stopTimer();
             console.log("game over");
+            const death = document.createElement("div");
+            death.classList.add("death");
+            const gameDisplay = document.getElementById("game");
+            const gameBack = document.getElementById("game-back");
+            gameDisplay.style.display = "none";
+            gameBack.style.display = "none";
+            document.body.appendChild(death);
         }
         if (this.victoryPoints === 2) {
             this.timer.stopTimer();
@@ -91,7 +98,7 @@ class Game {
             interval = setInterval(() => {
                 this.buttonModule.holdCounter++;
             }, 1);
-            console.log("mouse up fired");
+            console.log("mouse down fired");
             if (this.buttonModule.stripCondition) {
                 this.renderStrip();
             }
@@ -113,12 +120,8 @@ class Game {
                 }
             } else {
                 let string = this.printMinutes() + this.printSeconds();
-                if (
-                    string
-                    .split("")
-                    .map((e) => Number(e))
-                    .includes(this.buttonModule.stripCondition)
-                ) {
+                string = string.split("").map((e) => Number(e));
+                if (string.includes(this.buttonModule.stripCondition)) {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
                     button.removeEventListener("mousedown", mouseDownHandler);
@@ -127,11 +130,12 @@ class Game {
                 } else {
                     this.mistakes++;
                     console.log(`mistakes: ${this.mistakes}`);
+                    this.checkGameover();
                 }
             }
             this.buttonModule.holdCounter = 0;
             this.clearStrip();
-            console.log("mouse down fired");
+            console.log("mouse up fired");
         };
 
         button.addEventListener("mousedown", mouseDownHandler);

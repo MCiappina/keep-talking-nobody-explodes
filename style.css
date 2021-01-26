@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 #game {
     display: none;
     justify-content: space-around;
@@ -6,6 +10,12 @@
 #game-back {
     display: flex;
     justify-content: space-around;
+}
+
+.death {
+    height: 100%;
+    width: 100%;
+    background: black;
 }
 
 .blue {
