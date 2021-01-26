@@ -118,6 +118,28 @@ class Game {
         }
     };
 
+    renderIndicator = () => {
+        if (!this.buttonModule.indicator) {
+            return null;
+        }
+        const backDisplay = document.getElementById("game-back");
+        const indicatorDiv = document.createElement("div");
+        const lightDiv = document.createElement("div");
+        const light = this.buttonModule.indicator.isLit;
+        if (light) {
+            lightDiv.classList.add("lit");
+        } else {
+            lightDiv.classList.add("not-lit");
+        }
+        const labelDiv = document.createElement("div");
+        const label = this.buttonModule.indicator.label;
+        labelDiv.classList.add("label");
+        labelDiv.innerHTML = `<h2>${label}</h2>`;
+        indicatorDiv.appendChild(lightDiv);
+        indicatorDiv.appendChild(labelDiv);
+        backDisplay.appendChild(indicatorDiv);
+    };
+
     printTime = () => {
         this.printMinutes();
         this.printSeconds();
@@ -183,6 +205,7 @@ const startGame = () => {
     game.renderStrip();
     game.renderSerialNumber();
     game.renderBatteries();
+    game.renderIndicator();
 };
 
 const randomizeSerialNumber = () => {
