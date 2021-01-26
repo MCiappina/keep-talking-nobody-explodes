@@ -1,4 +1,16 @@
-const modules = document.querySelector(".modules").value;
+const INDICATORS = [
+    "SND",
+    "CLR",
+    "CAR",
+    "IND",
+    "FRQ",
+    "SIG",
+    "NSA",
+    "MSA",
+    "TRN",
+    "BOB",
+    "FRK",
+];
 
 let minDec = document.getElementById("minDec");
 let minUni = document.getElementById("minUni");
@@ -8,13 +20,14 @@ let secUni = document.getElementById("secUni");
 // todo how to make more than one module render
 
 class Game {
-    constructor(time, modules, timer, wiresModule) {
+    constructor(time, modules, timer, wiresModule, buttonModule) {
         this.mistakes = 0;
         this.victoryPoints = 0;
         this.time = time;
         this.modules = modules;
         this.timer = timer;
         this.wiresModule = wiresModule;
+        this.buttonModule = buttonModule;
     }
 
     //todo gameover
@@ -23,6 +36,10 @@ class Game {
         if (!this.timer.currentTime || this.mistakes === 3) {
             this.timer.stopTimer();
             console.log("game over");
+        }
+        if (this.victoryPoints == this.modules) {
+            this.timer.stopTimer();
+            console.log("you win!");
         }
     };
 
@@ -39,6 +56,7 @@ class Game {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
                     wireDiv.removeEventListener("click", handler);
+                    this.checkGameover();
                     let wireList = document.querySelectorAll(".wire");
                     for (let i = 0; i < wireList.length; i++) {
                         let elClone = wireList[i].cloneNode(true);
@@ -57,6 +75,10 @@ class Game {
             wireDiv.addEventListener("click", handler);
         });
     };
+
+    renderSerialNumber = () => {};
+
+    renderBatteries = () => {};
 
     printTime = () => {
         this.printMinutes();
@@ -95,17 +117,26 @@ const startGame = () => {
     let time = document.querySelector(".time").value * 60;
     const timer = new Timer(time);
 
-    // wiresModule initialization
-    let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
+    //widgets initialization
     let serialNumber = randomizeSerialNumber();
-    const wiresModule = new WiresModule(numberOfWires, serialNumber);
+    let batteries = randomizeBatteries();
+    let indicator = randomizeIndicator();
+
+    // wiresModule initialization
+    const wiresModule = new WiresModule(randomizeNumberOfWires(), serialNumber);
+
+    // buttonsModule initialization
+    const buttonModule = new ButtonModule(batteries, indicator);
 
     // game Initialization
-    const game = new Game(time, modules, timer, wiresModule);
+    const modules = document.querySelector(".modules").value;
+    console.log(modules);
+    const game = new Game(time, modules, timer, wiresModule, buttonModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
     game.wiresModule.setCorrectWire();
     game.renderWires();
+    game.buttonModule.makeButton();
 };
 
 const randomizeSerialNumber = () => {
@@ -117,6 +148,21 @@ const randomizeSerialNumber = () => {
     return randomString;
 };
 
-const removeEventHandler = (array, handler) => {
-    array.forEach((e) => e.removeEventListener("click", handler));
+const randomizeBatteries = () => Math.floor(Math.random() * 4);
+
+const randomizeNumberOfWires = () => Math.floor(Math.random() * (7 - 3) + 3);
+
+const randomizeIndicator = () => {
+    let isThereIndicator = Math.random() < 0.5;
+    let indicator;
+    if (isThereIndicator) {
+        let index = Math.floor(Math.random() * INDICATORS.length);
+        indicator = INDICATORS[index];
+        let isLit = Math.random() < 0.5;
+        return {
+            indicator: indicator,
+            isLit: isLit,
+        };
+    }
+    return false;
 };

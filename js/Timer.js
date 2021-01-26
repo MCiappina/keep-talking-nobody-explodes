@@ -10,7 +10,7 @@ class Timer {
             if (this.currentTime < 0) {
                 this.stopTimer();
             }
-            console.log(this.currentTime);
+            // console.log(this.currentTime);
         }, 1000);
     }
 
