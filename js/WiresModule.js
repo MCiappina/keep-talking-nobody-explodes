@@ -18,11 +18,9 @@ class WiresModule {
             let wire = new Wire(randomColor);
             this.wires.push(wire);
         }
-        console.log(this.wires);
     }
     setCorrectWire() {
         let copyArray = [...this.wires];
-        console.log(this.serialNumber);
         switch (this.numberOfWires) {
             case 3:
                 if (noWiresOfColor(copyArray, "red")) {

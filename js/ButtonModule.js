@@ -3,18 +3,55 @@ const colorsStrip = ["blue", "yellow", "white", "red"];
 
 const wordsList = ["ABORTAR", "DETONAR", "SEGURA", "APERTA"];
 
+// eventos de mouseUp
+// ideia do contador
+
+// onmousedown vai aumentando o contador e quando solta zera o contador. o contador tem que ser maior que o threshold nos casos de segurar o botao,
+//  e tem q ser menor q o threshold e maior que 0 nos casos de soltar imediatamente
 class ButtonModule {
     constructor(batteries, indicator) {
         this.color = "";
         this.word = "";
         this.batteries = batteries;
         this.indicator = indicator;
+        this.holdCounter = "";
+        this.holdThreshold = "";
     }
     makeButton() {
         this.randomizeButtonColor();
         this.randomizeStripColor();
         this.randomizeWord();
         console.log(this);
+    }
+
+    buttonAsDiv() {
+        let div = document.createElement("div");
+        div.classList.add(`${this.color}`);
+        div.classList.add("button");
+        div.innerHTML = `<h2>${this.word}</h2>`;
+        return div;
+    }
+
+    setCorrectCondition() {
+        if (buttonIsColor(this, "blue") && buttonSays(this, "ABORTAR")) {
+            console.log("button first condition procced");
+            this.holdThreshold = -1;
+        } else if (hasMoreThanXBattery(this, 1) && buttonSays(this, "DETONAR")) {
+            console.log("button second condition procced");
+            this.holdThreshold = 1500;
+        } else if (buttonIsColor(this, "white") && litIndicatorLabel(this, "CAR")) {
+            console.log("button third condition procced");
+            this.holdThreshold = -1;
+        } else if (hasMoreThanXBattery(this, 2) && litIndicatorLabel(this, "FRK")) {
+            console.log("button fourth condition procced");
+            this.holdThreshold = 1500;
+        } else if (buttonIsColor(this, "yellow")) {
+            console.log("button fifth condition procced");
+            this.holdThreshold = -1;
+        } else {
+            console.log("button sixth condition procced");
+            this.holdThreshold = -1;
+        }
     }
 
     randomizeButtonColor() {
@@ -31,3 +68,19 @@ class ButtonModule {
         this.word = wordsList[wordsListIndex];
     }
 }
+
+const buttonIsColor = (button, color) => {
+    return button.color === color;
+};
+
+const buttonSays = (button, word) => {
+    return button.word === word;
+};
+
+const hasMoreThanXBattery = (button, num) => {
+    return button.batteries > num;
+};
+
+const litIndicatorLabel = (button, label) => {
+    return button.indicator.isLit && button.label === label ? true : false;
+};

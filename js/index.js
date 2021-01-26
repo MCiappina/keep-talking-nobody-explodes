@@ -71,9 +71,17 @@ class Game {
             };
             let wireDiv = e.wireAsDiv();
             wireModule.appendChild(wireDiv);
-            console.log(wireDiv);
             wireDiv.addEventListener("click", handler);
         });
+    };
+
+    renderButton = () => {
+        const gameDisplay = document.querySelector("#game");
+        const buttonModule = document.createElement("div");
+        buttonModule.classList.add("button-module");
+        gameDisplay.appendChild(buttonModule);
+        let button = this.buttonModule.buttonAsDiv();
+        buttonModule.appendChild(button);
     };
 
     renderSerialNumber = () => {};
@@ -90,12 +98,14 @@ class Game {
         let minutes = this.timer.twoDigitsNumber(this.timer.getMinutes());
         minDec.innerText = minutes[0];
         minUni.innerText = minutes[1];
+        return minutes;
     };
 
     printSeconds = () => {
         let seconds = this.timer.twoDigitsNumber(this.timer.getSeconds());
         secDec.innerText = seconds[0];
         secUni.innerText = seconds[1];
+        return seconds;
     };
 }
 
@@ -111,7 +121,7 @@ const startGame = () => {
     const gameDisplay = document.querySelector("#game");
     const menu = document.querySelector("#menu");
     menu.style.display = "none";
-    gameDisplay.style.display = "block";
+    gameDisplay.style.display = "flex";
 
     // timer Initialization
     let time = document.querySelector(".time").value * 60;
@@ -122,6 +132,8 @@ const startGame = () => {
     let batteries = randomizeBatteries();
     let indicator = randomizeIndicator();
 
+    // se precisar fazer mais do q um modulo -> fazer um array com os modulos;
+
     // wiresModule initialization
     const wiresModule = new WiresModule(randomizeNumberOfWires(), serialNumber);
 
@@ -130,13 +142,14 @@ const startGame = () => {
 
     // game Initialization
     const modules = document.querySelector(".modules").value;
-    console.log(modules);
     const game = new Game(time, modules, timer, wiresModule, buttonModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
     game.wiresModule.setCorrectWire();
     game.renderWires();
     game.buttonModule.makeButton();
+    game.buttonModule.setCorrectCondition();
+    game.renderButton();
 };
 
 const randomizeSerialNumber = () => {
@@ -157,10 +170,10 @@ const randomizeIndicator = () => {
     let indicator;
     if (isThereIndicator) {
         let index = Math.floor(Math.random() * INDICATORS.length);
-        indicator = INDICATORS[index];
+        label = INDICATORS[index];
         let isLit = Math.random() < 0.5;
         return {
-            indicator: indicator,
+            label: label,
             isLit: isLit,
         };
     }

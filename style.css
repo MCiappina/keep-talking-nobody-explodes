@@ -1,5 +1,6 @@
 #game {
     display: none;
+    justify-content: space-around;
 }
 
 .blue {
@@ -31,4 +32,16 @@
     width: 200px;
     height: 100px;
     margin: 10px 0;
+}
+
+.button {
+    font-size: 15px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
