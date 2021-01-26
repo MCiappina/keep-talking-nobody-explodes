@@ -18,6 +18,15 @@ body {
     background: black;
 }
 
+.victory {
+    height: 100%;
+    width: 100%;
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .blue {
     background: blue;
 }

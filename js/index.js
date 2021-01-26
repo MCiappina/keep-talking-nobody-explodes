@@ -47,6 +47,14 @@ class Game {
         if (this.victoryPoints === 2) {
             this.timer.stopTimer();
             console.log("you win!");
+            const victory = document.createElement("div");
+            victory.classList.add("victory");
+            const gameDisplay = document.getElementById("game");
+            const gameBack = document.getElementById("game-back");
+            gameDisplay.style.display = "none";
+            gameBack.style.display = "none";
+            victory.innerHTML = `<h1>PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}</h1>`;
+            document.body.appendChild(victory);
         }
     };
     //quando ganhar ou perder vai fazer o window.reload
