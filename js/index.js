@@ -37,11 +37,12 @@ class Game {
             this.timer.stopTimer();
             console.log("game over");
         }
-        if (this.victoryPoints == this.modules) {
+        if (this.victoryPoints === 2) {
             this.timer.stopTimer();
             console.log("you win!");
         }
     };
+    //quando ganhar ou perder vai fazer o window.reload
 
     // todo disable all event handlers when hitting the right wire;
 
@@ -76,22 +77,62 @@ class Game {
     };
 
     renderButton = () => {
+        this.buttonModule.setStripCondition();
         const gameDisplay = document.querySelector("#game");
         const buttonModule = document.createElement("div");
         buttonModule.classList.add("button-module");
         gameDisplay.appendChild(buttonModule);
         let button = this.buttonModule.buttonAsDiv();
         buttonModule.appendChild(button);
+
+        let interval;
+
+        const mouseDownHandler = () => {
+            interval = setInterval(() => {
+                this.buttonModule.holdCounter++;
+                console.log(this.buttonModule.holdCounter);
+            }, 1);
+            console.log("mouse up fired");
+            if (this.buttonModule.stripCondition) {
+                this.renderStrip();
+            }
+        };
+        // TODO randomizeStripcolor method fora da inicializaçao do botao
+        const mouseUpHandler = () => {
+            clearInterval(interval);
+            if (
+                this.buttonModule.holdCounter < this.buttonModule.holdThreshold &&
+                !this.buttonModule.stripCondition
+            ) {
+                this.victoryPoints++;
+                console.log(`victory: ${this.victoryPoints}`);
+                button.removeEventListener("mousedown", mouseDownHandler);
+                button.removeEventListener("mouseup", mouseUpHandler);
+                this.checkGameover();
+            }
+            this.buttonModule.holdCounter = 0;
+            this.clearStrip();
+            console.log("mouse down fired");
+        };
+
+        button.addEventListener("mousedown", mouseDownHandler);
+        button.addEventListener("mouseup", mouseUpHandler);
     };
 
     // condiçao pra aparecer o render strip = o counter tem q ser maior q zero além do hold threshold === -1
     // o counter só vai ser maior q 0 quando estiver sendo segurado, quando for solto vai virar 0, ou seja, strip só aparece quando clica e segura
     // renderStrip dentro do eventhandler
+    clearStrip = () => {
+        const strip = document.querySelector(".strip");
+        if (strip) {
+            strip.remove();
+        }
+    };
+
     renderStrip = () => {
         if (this.buttonModule.holdThreshold !== -1) {
             return null;
         }
-        this.buttonModule.setStripCondition();
         const buttonModule = document.querySelector(".button-module");
         const strip = document.createElement("div");
         strip.classList.add(this.buttonModule.strip);
@@ -111,7 +152,6 @@ class Game {
         const backDisplay = document.getElementById("game-back");
         const batteries = this.buttonModule.batteries;
         for (let i = 0; i < batteries; i++) {
-            console.log("hey");
             const batteryDiv = document.createElement("div");
             batteryDiv.classList.add("battery");
             backDisplay.appendChild(batteryDiv);
@@ -149,7 +189,7 @@ class Game {
     printMinutes = () => {
         let minutes = this.timer.twoDigitsNumber(this.timer.getMinutes());
         minDec.innerText = minutes[0];
-        minUni.innerText = minutes[1];
+        minUni.innerText = `${minutes[1]}:`;
         return minutes;
     };
 
@@ -203,7 +243,6 @@ const startGame = () => {
     game.buttonModule.setHoldThreshold();
     game.renderButton();
     // ATENÇÃO renderStrip é pra estar no event handler do click do mouse
-    game.renderStrip();
     game.renderSerialNumber();
     game.renderBatteries();
     game.renderIndicator();

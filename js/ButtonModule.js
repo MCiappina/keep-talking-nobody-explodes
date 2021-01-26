@@ -13,7 +13,7 @@ class ButtonModule {
         this.batteries = batteries;
         this.indicator = indicator;
         this.color = "";
-        this.strip = "black";
+        this.strip = "";
         this.word = "";
         this.holdCounter = "";
         this.holdThreshold = "";
@@ -40,21 +40,21 @@ class ButtonModule {
             this.randomizeStripColor();
         } else if (hasMoreThanXBattery(this, 1) && buttonSays(this, "DETONAR")) {
             console.log("button second condition procced");
-            this.holdThreshold = 1500;
+            this.holdThreshold = 100;
         } else if (buttonIsColor(this, "white") && litIndicatorLabel(this, "CAR")) {
             console.log("button third condition procced");
             this.holdThreshold = -1;
             this.randomizeStripColor();
         } else if (hasMoreThanXBattery(this, 2) && litIndicatorLabel(this, "FRK")) {
             console.log("button fourth condition procced");
-            this.holdThreshold = 1500;
+            this.holdThreshold = 100;
         } else if (buttonIsColor(this, "yellow")) {
             console.log("button fifth condition procced");
             this.holdThreshold = -1;
             this.randomizeStripColor();
         } else if (buttonIsColor(this, "red") && buttonSays(this, "SEGURA")) {
             console.log("button sixth condition procced");
-            this.holdThreshold = 1500;
+            this.holdThreshold = 100;
         } else {
             console.log("button seventh condition procced");
             this.holdThreshold = -1;
