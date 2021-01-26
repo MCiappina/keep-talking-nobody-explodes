@@ -7,10 +7,10 @@ class Timer {
         this.intervalId = setInterval(() => {
             callback();
             this.currentTime -= 1;
-            if (this.currentTime === 0) {
+            if (this.currentTime < 0) {
                 this.stopTimer();
-                callback();
             }
+            console.log(this.currentTime);
         }, 1000);
     }
 

@@ -118,6 +118,15 @@ class Wire {
         this.color = color;
         this.correctWire = false;
     }
+    cutWire() {
+        return this.correctWire;
+    }
+    wireAsDiv() {
+        let div = document.createElement("div");
+        div.classList.add(`${this.color}`);
+        div.classList.add("wire");
+        return div;
+    }
 }
 
 const has2WiresOfColor = (array, color) => {

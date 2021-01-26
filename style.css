@@ -1,3 +1,34 @@
 #game {
     display: none;
 }
+
+.blue {
+    border: 1px solid black;
+    background: blue;
+}
+
+.yellow {
+    border: 1px solid black;
+    background: yellow;
+}
+
+.red {
+    border: 1px solid black;
+    background: red;
+}
+
+.black {
+    border: 1px solid black;
+    background: black;
+}
+
+.white {
+    border: 1px solid black;
+    background: white;
+}
+
+.wire {
+    width: 200px;
+    height: 100px;
+    margin: 10px 0;
+}

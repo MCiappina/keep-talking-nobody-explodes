@@ -23,6 +23,16 @@ class Game {
         }
     };
 
+    renderWires = () => {
+        const gameDisplay = document.querySelector("#game");
+        const wireModule = document.createElement("div");
+        wireModule.classList.add("wire-module");
+        gameDisplay.appendChild(wireModule);
+        this.wiresModule.wires.forEach((e) => {
+            wireModule.appendChild(e.wireAsDiv());
+        });
+    };
+
     printTime = () => {
         this.printMinutes();
         this.printSeconds();
@@ -49,9 +59,9 @@ window.onload = () => {
 
 const startGame = () => {
     // display Changes
+    const gameDisplay = document.querySelector("#game");
     const menu = document.querySelector("#menu");
     menu.style.display = "none";
-    const gameDisplay = document.querySelector("#game");
     gameDisplay.style.display = "block";
 
     // timer Initialization
@@ -61,13 +71,14 @@ const startGame = () => {
     // wiresModule initialization
     let numberOfWires = Math.floor(Math.random() * (7 - 3) + 3);
     let serialNumber = randomizeSerialNumber();
-    const wiresModule = new WiresModule(6, serialNumber);
+    const wiresModule = new WiresModule(numberOfWires, serialNumber);
 
     // game Initialization
     const game = new Game(time, modules, timer, wiresModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
     game.wiresModule.setCorrectWire();
+    game.renderWires();
 };
 
 const randomizeSerialNumber = () => {
