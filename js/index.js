@@ -20,8 +20,14 @@ class Game {
     checkGameover = () => {
         if (!this.timer.currentTime) {
             this.timer.stopTimer();
+            console.log("game over");
+        }
+        if (this.mistakes === 3) {
+            console.log("game over");
         }
     };
+
+    // todo disable all event handlers when hitting the right one
 
     renderWires = () => {
         const gameDisplay = document.querySelector("#game");
@@ -29,13 +35,29 @@ class Game {
         wireModule.classList.add("wire-module");
         gameDisplay.appendChild(wireModule);
         this.wiresModule.wires.forEach((e) => {
-            wireModule.appendChild(e.wireAsDiv());
+            const handler = () => {
+                if (e.correctWire) {
+                    this.victoryPoints++;
+                    console.log(`victory: ${this.victoryPoints}`);
+                    wireDiv.removeEventListener("click", handler);
+                } else {
+                    this.mistakes++;
+                    console.log(`mistakes ${this.mistakes}`);
+                    wireDiv.removeEventListener("click", handler);
+                    this.checkGameover();
+                }
+            };
+            let wireDiv = e.wireAsDiv();
+            wireModule.appendChild(wireDiv);
+            console.log(wireDiv);
+            wireDiv.addEventListener("click", handler);
         });
     };
 
     printTime = () => {
         this.printMinutes();
         this.printSeconds();
+        this.checkGameover();
     };
 
     printMinutes = () => {
@@ -88,4 +110,8 @@ const randomizeSerialNumber = () => {
     } while (randomString.split("").every((e) => typeof e === "number"));
     randomString += Math.floor(Math.random() * 10);
     return randomString;
+};
+
+const removeEventHandler = (array, handler) => {
+    array.forEach((e) => e.removeEventListener("click", handler));
 };
