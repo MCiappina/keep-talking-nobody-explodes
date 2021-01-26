@@ -91,6 +91,7 @@ class Game {
         if (this.buttonModule.holdThreshold !== -1) {
             return null;
         }
+        this.buttonModule.setStripCondition();
         const buttonModule = document.querySelector(".button-module");
         const strip = document.createElement("div");
         strip.classList.add(this.buttonModule.strip);
@@ -98,7 +99,13 @@ class Game {
         buttonModule.appendChild(strip);
     };
 
-    renderSerialNumber = () => {};
+    renderSerialNumber = () => {
+        const backDisplay = document.getElementById("game-back");
+        const serialNumber = this.wiresModule.serialNumber.toUpperCase();
+        const serialNumberDiv = document.createElement("div");
+        serialNumberDiv.innerHTML = `<h2>${serialNumber}</h2>`;
+        backDisplay.appendChild(serialNumberDiv);
+    };
 
     renderBatteries = () => {};
 
