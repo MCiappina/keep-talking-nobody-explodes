@@ -20,11 +20,10 @@ let secUni = document.getElementById("secUni");
 const mistakeCounter = document.querySelector(".mistake-counter");
 
 class Game {
-    constructor(time, modules, timer, wiresModule, buttonModule) {
+    constructor(time, timer, wiresModule, buttonModule) {
         this.mistakes = 0;
         this.victoryPoints = 0;
         this.time = time;
-        this.modules = modules;
         this.timer = timer;
         this.wiresModule = wiresModule;
         this.buttonModule = buttonModule;
@@ -291,8 +290,7 @@ const startGame = () => {
     const buttonModule = new ButtonModule(batteries, indicator);
 
     // game Initialization
-    const modules = document.querySelector(".modules").value;
-    const game = new Game(time, modules, timer, wiresModule, buttonModule);
+    const game = new Game(time, timer, wiresModule, buttonModule);
     game.timer.startTimer(game.printTime);
     game.wiresModule.makeWires();
     game.wiresModule.setCorrectWire();

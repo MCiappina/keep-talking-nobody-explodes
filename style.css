@@ -11,6 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("./assets/dust2night.jpg");
+    background-size: cover;
 }
 
 .timer {
@@ -36,6 +38,13 @@ body {
 #menu {
     background-image: url("./assets/dust2-pixel\ art.jpg");
     background-size: cover;
+    border: 2px outset white;
+    border-radius: 15px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #game {
