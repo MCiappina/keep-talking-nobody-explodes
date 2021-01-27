@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
 @font-face {
     font-family: "alarm clock";
     src: url("./assets/alarmclock.woff2") format("woff2"), url("./assets/alarmclock.woff") format("woff");
@@ -329,12 +330,35 @@ body {
 }
 
 .victory {
-    height: 100%;
-    width: 100%;
-    background: green;
+    height: 40vh;
+    width: 30vw;
+    background: rgba(105, 52, 52, 1);
+    border-radius: 15px;
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: fadeInVictory ease 3s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    padding: 40px 40px;
+    font-family: "Game Played";
+}
+
+.life-quote {
+    font-family: "Cedarville Cursive", cursive;
+    font-size: 24px;
+    font-weight: 100;
+    width: 70%;
+    text-align: center;
+    color: white;
+}
+
+.time-remaining {
+    color: rgba(105, 52, 52, 1);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    width: 80%;
 }
 
 .death-quote {
@@ -346,6 +370,31 @@ body {
     color: white;
 }
 
+.death {
+    opacity: 0;
+    animation: fadeIn ease 10s;
+    animation-fill-mode: forwards;
+}
+
 .play-again {
     padding: 20px;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInVictory {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.9;
+    }
 }

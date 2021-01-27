@@ -44,15 +44,17 @@ class Game {
         }
         if (this.victoryPoints === 2) {
             this.timer.stopTimer();
+            setInterval(() => {
+                const victory = document.querySelector(".victory");
+                const h2 = document.querySelector(".victory h2");
+                const gameDisplay = document.getElementById("game");
+                const gameBack = document.getElementById("game-back");
+                gameDisplay.style.display = "none";
+                gameBack.style.display = "none";
+                victory.style.display = "flex";
+                h2.innerText = `PARABÉNS! A BOMBA FOI DESARMADA, FALTANDO ${this.timer.printSplit()}!`;
+            }, 2000);
             console.log("you win!");
-            const victory = document.querySelector(".victory");
-            const h1 = document.querySelector(".victory h1");
-            const gameDisplay = document.getElementById("game");
-            const gameBack = document.getElementById("game-back");
-            gameDisplay.style.display = "none";
-            gameBack.style.display = "none";
-            victory.style.display = "flex";
-            h1.innerText = `PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}`;
         }
     };
     //quando ganhar ou perder vai fazer o window.reload
