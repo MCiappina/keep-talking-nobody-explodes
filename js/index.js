@@ -17,7 +17,7 @@ let minUni = document.getElementById("minUni");
 let secDec = document.getElementById("secDec");
 let secUni = document.getElementById("secUni");
 
-// todo how to make more than one module render
+const mistakeCounter = document.querySelector(".mistake-counter");
 
 class Game {
     constructor(time, modules, timer, wiresModule, buttonModule) {
@@ -36,30 +36,26 @@ class Game {
         if (!this.timer.currentTime || this.mistakes === 3) {
             this.timer.stopTimer();
             console.log("game over");
-            const death = document.createElement("div");
-            death.classList.add("death");
+            const loss = document.querySelector(".loss");
             const gameDisplay = document.getElementById("game");
             const gameBack = document.getElementById("game-back");
             gameDisplay.style.display = "none";
             gameBack.style.display = "none";
-            document.body.appendChild(death);
+            loss.style.display = "flex";
         }
         if (this.victoryPoints === 2) {
             this.timer.stopTimer();
             console.log("you win!");
-            const victory = document.createElement("div");
-            victory.classList.add("victory");
+            const victory = document.querySelector(".victory");
             const gameDisplay = document.getElementById("game");
             const gameBack = document.getElementById("game-back");
             gameDisplay.style.display = "none";
             gameBack.style.display = "none";
-            victory.innerHTML = `<h1>PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}</h1>`;
-            document.body.appendChild(victory);
+            victory.style.display = "flex";
+            victory.h1.innerHTML = `PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}`;
         }
     };
     //quando ganhar ou perder vai fazer o window.reload
-
-    // todo disable all event handlers when hitting the right wire;
 
     renderWires = () => {
         const gameDisplay = document.querySelector("#game");
@@ -80,7 +76,7 @@ class Game {
                     }
                 } else {
                     this.mistakes++;
-                    console.log(`mistakes ${this.mistakes}`);
+                    mistakeCounter.innerText += "X";
                     wireDiv.removeEventListener("click", handler);
                     this.checkGameover();
                 }
@@ -111,7 +107,7 @@ class Game {
                 this.renderStrip();
             }
         };
-        // TODO randomizeStripcolor method fora da inicializaçao do botao
+
         const mouseUpHandler = () => {
             clearInterval(interval);
             if (!this.buttonModule.stripCondition) {
@@ -123,7 +119,7 @@ class Game {
                     this.checkGameover();
                 } else {
                     this.mistakes++;
-                    console.log(`mistakes: ${this.mistakes}`);
+                    mistakeCounter.innerText += "X";
                     this.checkGameover();
                 }
             } else {
@@ -137,7 +133,7 @@ class Game {
                     this.checkGameover();
                 } else {
                     this.mistakes++;
-                    console.log(`mistakes: ${this.mistakes}`);
+                    mistakeCounter.innerText += "X";
                     this.checkGameover();
                 }
             }
@@ -150,9 +146,6 @@ class Game {
         button.addEventListener("mouseup", mouseUpHandler);
     };
 
-    // condiçao pra aparecer o render strip = o counter tem q ser maior q zero além do hold threshold === -1
-    // o counter só vai ser maior q 0 quando estiver sendo segurado, quando for solto vai virar 0, ou seja, strip só aparece quando clica e segura
-    // renderStrip dentro do eventhandler
     clearStrip = () => {
         const strip = document.querySelector(".strip");
         if (strip) {
@@ -237,14 +230,36 @@ window.onload = () => {
         e.preventDefault();
         startGame();
     };
+    // const playAgainBtnList = document.querySelectorAll(".play-again");
+    // playAgainBtnList.forEach(button => {
+
+    // })
 };
 
 const startGame = () => {
     // display Changes
     const gameDisplay = document.querySelector("#game");
+    const gameBack = document.querySelector("#game-back");
     const menu = document.querySelector("#menu");
     menu.style.display = "none";
     gameDisplay.style.display = "flex";
+
+    const spinBtnList = document.querySelectorAll(".spin-btn");
+
+    spinBtnList.forEach((e) => {
+        console.log(e);
+        console.log(gameDisplay.style);
+        e.onclick = () => {
+            console.log("spin-btn fired");
+            if (gameDisplay.style.display === "flex") {
+                gameDisplay.style.display = "none";
+                gameBack.style.display = "flex";
+            } else {
+                gameBack.style.display = "none";
+                gameDisplay.style.display = "flex";
+            }
+        };
+    });
 
     // timer Initialization
     let time = document.querySelector(".time").value * 60;
@@ -254,8 +269,6 @@ const startGame = () => {
     let serialNumber = randomizeSerialNumber();
     let batteries = randomizeBatteries();
     let indicator = randomizeIndicator();
-
-    // se precisar fazer mais do q um modulo -> fazer um array com os modulos;
 
     // wiresModule initialization
     const wiresModule = new WiresModule(randomizeNumberOfWires(), serialNumber);
@@ -273,7 +286,6 @@ const startGame = () => {
     game.buttonModule.makeButton();
     game.buttonModule.setHoldThreshold();
     game.renderButton();
-    // ATENÇÃO renderStrip é pra estar no event handler do click do mouse
     game.renderSerialNumber();
     game.renderBatteries();
     game.renderIndicator();

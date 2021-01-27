@@ -3,11 +3,6 @@ const colorsStrip = ["blue", "yellow", "white", "red"];
 
 const wordsList = ["ABORTAR", "DETONAR", "SEGURA", "APERTA"];
 
-// eventos de mouseUp
-// ideia do contador
-
-// onmousedown vai aumentando o contador e quando solta zera o contador. o contador tem que ser maior que o threshold nos casos de segurar o botao,
-//  e tem q ser menor q o threshold e maior que 0 nos casos de soltar imediatamente
 class ButtonModule {
     constructor(batteries, indicator) {
         this.batteries = batteries;
