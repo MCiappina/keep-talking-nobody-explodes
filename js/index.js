@@ -58,15 +58,20 @@ class Game {
     //quando ganhar ou perder vai fazer o window.reload
 
     renderWires = () => {
+        const isCompletedDiv = document.createElement("div");
+        isCompletedDiv.classList.add("not-completed");
         const gameDisplay = document.querySelector("#game");
         const wireModule = document.createElement("div");
         wireModule.classList.add("wire-module");
+        wireModule.appendChild(isCompletedDiv);
         gameDisplay.appendChild(wireModule);
         this.wiresModule.wires.forEach((e) => {
             const handler = () => {
                 if (e.correctWire) {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
+                    isCompletedDiv.classList.remove("not-completed");
+                    isCompletedDiv.classList.add("completed");
                     wireDiv.removeEventListener("click", handler);
                     this.checkGameover();
                     let wireList = document.querySelectorAll(".wire");
@@ -91,9 +96,12 @@ class Game {
         this.buttonModule.setStripCondition();
         const gameDisplay = document.querySelector("#game");
         const buttonModule = document.createElement("div");
+        const isCompletedDiv = document.createElement("div");
+        isCompletedDiv.classList.add("not-completed");
         buttonModule.classList.add("button-module");
         gameDisplay.appendChild(buttonModule);
         let button = this.buttonModule.buttonAsDiv();
+        buttonModule.appendChild(isCompletedDiv);
         buttonModule.appendChild(button);
 
         let interval;
@@ -114,6 +122,8 @@ class Game {
                 if (this.buttonModule.holdCounter < this.buttonModule.holdThreshold) {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
+                    isCompletedDiv.classList.remove("not-completed");
+                    isCompletedDiv.classList.add("completed");
                     button.removeEventListener("mousedown", mouseDownHandler);
                     button.removeEventListener("mouseup", mouseUpHandler);
                     this.checkGameover();
@@ -128,6 +138,8 @@ class Game {
                 if (string.includes(this.buttonModule.stripCondition)) {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
+                    isCompletedDiv.classList.remove("not-completed");
+                    isCompletedDiv.classList.add("completed");
                     button.removeEventListener("mousedown", mouseDownHandler);
                     button.removeEventListener("mouseup", mouseUpHandler);
                     this.checkGameover();

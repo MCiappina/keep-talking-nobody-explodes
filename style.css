@@ -1,10 +1,25 @@
 body {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {}
+
+#menu {
+    background-image: url("./assets/dust2-pixel\ art.jpg");
+    background-size: cover;
 }
 
 #game {
+    background-image: url("./assets/bomb-front.png");
+    background-size: cover;
+    width: 870px;
+    height: 750px;
     display: none;
     justify-content: space-around;
+    align-items: center;
 }
 
 #game-back {
@@ -53,8 +68,32 @@ body {
 .wire {
     border: 5px solid black;
     width: 200px;
-    height: 100px;
+    height: 15px;
+    border-radius: 15px;
     margin: 10px 0;
+}
+
+.not-completed {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: red;
+}
+
+.completed {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: green;
+}
+
+.button-module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .button {
@@ -62,23 +101,29 @@ body {
     font-size: 15px;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    right: 55px;
 }
 
 .button:hover,
 .wire:hover {
     border: 5px solid orange;
+    cursor: pointer;
 }
 
 .strip {
     border: 1px solid black;
-    height: 100px;
-    width: 200px;
+    height: 20px;
+    width: 100px;
+    margin-top: 20px;
+    position: relative;
+    right: 55px;
 }
 
 .battery {
