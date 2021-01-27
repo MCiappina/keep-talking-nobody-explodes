@@ -135,7 +135,10 @@ class Game {
             } else {
                 let string = `${minDec.innerText}${minUni.innerText}${secDec.innerText}${secUni.innerText}`;
                 string = string.split("").map((e) => Number(e));
-                if (string.includes(this.buttonModule.stripCondition)) {
+                if (
+                    string.includes(this.buttonModule.stripCondition) &&
+                    this.buttonModule.holdCounter >= 100
+                ) {
                     this.victoryPoints++;
                     console.log(`victory: ${this.victoryPoints}`);
                     isCompletedDiv.classList.remove("not-completed");
