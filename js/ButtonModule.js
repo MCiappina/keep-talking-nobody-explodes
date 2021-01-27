@@ -24,6 +24,7 @@ class ButtonModule {
         let div = document.createElement("div");
         div.classList.add(`${this.color}`);
         div.classList.add("button");
+        div.classList.add("hoverable");
         div.innerHTML = `<h2>${this.word}</h2>`;
         return div;
     }

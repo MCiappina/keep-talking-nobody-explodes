@@ -102,6 +102,7 @@ class Wire {
         let div = document.createElement("div");
         div.classList.add(`${this.color}`);
         div.classList.add("wire");
+        div.classList.add("hoverable");
         return div;
     }
 }

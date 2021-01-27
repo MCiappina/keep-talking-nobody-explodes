@@ -223,8 +223,7 @@ body {
     right: 55px;
 }
 
-.button:hover,
-.wire:hover {
+.hoverable:hover {
     border: 5px solid orange;
     cursor: pointer;
 }
@@ -383,6 +382,9 @@ body {
 
 @keyframes fadeIn {
     0% {
+        opacity: 0;
+    }
+    50% {
         opacity: 0;
     }
     100% {

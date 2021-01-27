@@ -12,6 +12,13 @@ const INDICATORS = [
     "FRK",
 ];
 
+const bombDefusedAudio = new Audio("./assets/bombdef.wav");
+bombDefusedAudio.volume = 0.2;
+const bombPlantedAudio = new Audio("./assets/bombpl.wav");
+bombPlantedAudio.volume = 0.2;
+const bombBeep = new Audio("./assets/c4_beep1.wav");
+bombBeep.volume = 0.1;
+
 let minDec = document.getElementById("minDec");
 let minUni = document.getElementById("minUni");
 let secDec = document.getElementById("secDec");
@@ -44,6 +51,7 @@ class Game {
         }
         if (this.victoryPoints === 2) {
             this.timer.stopTimer();
+            bombDefusedAudio.play();
             setInterval(() => {
                 const victory = document.querySelector(".victory");
                 const h2 = document.querySelector(".victory h2");
@@ -79,12 +87,14 @@ class Game {
                     let wireList = document.querySelectorAll(".wire");
                     for (let i = 0; i < wireList.length; i++) {
                         let elClone = wireList[i].cloneNode(true);
+                        elClone.classList.remove("hoverable");
                         wireList[i].parentNode.replaceChild(elClone, wireList[i]);
                     }
                 } else {
                     this.mistakes++;
                     mistakeCounter.innerText += "X";
                     wireDiv.removeEventListener("click", handler);
+                    wireDiv.classList.remove("hoverable");
                     this.checkGameover();
                 }
             };
@@ -128,6 +138,7 @@ class Game {
                     isCompletedDiv.classList.add("completed");
                     button.removeEventListener("mousedown", mouseDownHandler);
                     button.removeEventListener("mouseup", mouseUpHandler);
+                    button.classList.remove("hoverable");
                     this.checkGameover();
                 } else {
                     this.mistakes++;
@@ -147,6 +158,7 @@ class Game {
                     isCompletedDiv.classList.add("completed");
                     button.removeEventListener("mousedown", mouseDownHandler);
                     button.removeEventListener("mouseup", mouseUpHandler);
+                    button.classList.remove("hoverable");
                     this.checkGameover();
                 } else {
                     this.mistakes++;
@@ -227,6 +239,7 @@ class Game {
     };
 
     printTime = () => {
+        bombBeep.play();
         this.printMinutes();
         this.printSeconds();
         this.checkGameover();
@@ -310,6 +323,7 @@ const startGame = () => {
     game.renderSerialNumber();
     game.renderBatteries();
     game.renderIndicator();
+    setTimeout(() => bombPlantedAudio.play(), 1000);
 };
 
 const randomizeSerialNumber = () => {
