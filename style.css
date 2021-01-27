@@ -14,6 +14,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "The Godfather";
+    src: url("./assets/Godfather.woff2") format("woff2"), url("./assets/Godfather.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -146,24 +154,6 @@ body {
     display: none;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.loss {
-    display: none;
-    height: 100%;
-    width: 100%;
-    background: black;
-    justify-content: center;
-    align-items: center;
-}
-
-.victory {
-    height: 100%;
-    width: 100%;
-    background: green;
-    display: none;
-    justify-content: center;
-    align-items: center;
 }
 
 .blue {
@@ -326,4 +316,36 @@ body {
     margin: 0 5px;
     width: 45px;
     height: 60px;
+}
+
+.loss {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.victory {
+    height: 100%;
+    width: 100%;
+    background: green;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.death-quote {
+    font-family: "The Godfather";
+    font-size: 60px;
+    font-weight: 100;
+    width: 50%;
+    text-align: center;
+    color: white;
+}
+
+.play-again {
+    padding: 20px;
 }
