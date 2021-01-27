@@ -46,12 +46,13 @@ class Game {
             this.timer.stopTimer();
             console.log("you win!");
             const victory = document.querySelector(".victory");
+            const h1 = document.querySelector(".victory h1");
             const gameDisplay = document.getElementById("game");
             const gameBack = document.getElementById("game-back");
             gameDisplay.style.display = "none";
             gameBack.style.display = "none";
             victory.style.display = "flex";
-            victory.h1.innerHTML = `PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}`;
+            h1.innerText = `PARABÉNS! VC GANHOU, FALTANDO ${this.timer.printSplit()}`;
         }
     };
     //quando ganhar ou perder vai fazer o window.reload

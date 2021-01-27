@@ -9,7 +9,7 @@
 
 <body>
     <div id="menu">
-        <h1>Keep Talking and nobody explodes</h1>
+        <h1>Keep talking and nobody explodes</h1>
         <p>
             <span>Welcome to the dangerous and challenging world of bomb
           defusing.</span
@@ -26,7 +26,14 @@
       <form id="start" action="#">
         <h2>Set the bomb timer and number of modules:</h2>
         <label for="time">Time:</label>
-        <input name="time" type="number" class="time" />
+        <input
+          name="time"
+          type="number"
+          min="1"
+          class="time"
+          value="3"
+          required
+        />
         <button type="submit">Start Game</button>
       </form>
     </div>
@@ -46,8 +53,8 @@
         <button class="spin-btn">Virar Bomba</button>
     </div>
     <div class="victory">
-        <button class="play-again">Jogar novamente</button>
         <h1></h1>
+        <button class="play-again">Jogar novamente</button>
     </div>
     <div class="loss">
         <button class="play-again">Jogar novamente</button>
