@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "alarm clock";
+    src: url("./assets/alarmclock.woff2") format("woff2"), url("./assets/alarmclock.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -5,7 +13,25 @@ body {
     align-items: center;
 }
 
-.timer {}
+.timer {
+    font-family: "alarm clock", sans-serif;
+    color: red;
+    font-size: 40px;
+    display: block;
+    position: relative;
+    left: 60px;
+    bottom: 10px;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    p {
+        display: block;
+    }
+}
+
+.mistake-counter {
+    display: block;
+    position: relative;
+    top: 15px;
+}
 
 #menu {
     background-image: url("./assets/dust2-pixel\ art.jpg");
