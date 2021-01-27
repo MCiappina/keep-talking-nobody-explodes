@@ -133,7 +133,7 @@ class Game {
                     this.checkGameover();
                 }
             } else {
-                let string = this.printMinutes() + this.printSeconds();
+                let string = `${minDec.innerText}${minUni.innerText}${secDec.innerText}${secUni.innerText}`;
                 string = string.split("").map((e) => Number(e));
                 if (string.includes(this.buttonModule.stripCondition)) {
                     this.victoryPoints++;
@@ -226,14 +226,12 @@ class Game {
         let minutes = this.timer.twoDigitsNumber(this.timer.getMinutes());
         minDec.innerText = minutes[0];
         minUni.innerText = `${minutes[1]}:`;
-        return minutes;
     };
 
     printSeconds = () => {
         let seconds = this.timer.twoDigitsNumber(this.timer.getSeconds());
         secDec.innerText = seconds[0];
         secUni.innerText = seconds[1];
-        return seconds;
     };
 }
 
