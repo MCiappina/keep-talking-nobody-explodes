@@ -242,10 +242,12 @@ window.onload = () => {
         e.preventDefault();
         startGame();
     };
-    // const playAgainBtnList = document.querySelectorAll(".play-again");
-    // playAgainBtnList.forEach(button => {
-
-    // })
+    const playAgainBtnList = document.querySelectorAll(".play-again");
+    playAgainBtnList.forEach((button) => {
+        button.onclick = () => {
+            location.reload();
+        };
+    });
 };
 
 const startGame = () => {
