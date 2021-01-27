@@ -398,6 +398,7 @@ body {
 .play-again {
   padding: 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 @keyframes fadeIn {

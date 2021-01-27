@@ -18,6 +18,10 @@ const bombPlantedAudio = new Audio("./assets/bombpl.wav");
 bombPlantedAudio.volume = 0.2;
 const bombBeep = new Audio("./assets/c4_beep1.wav");
 bombBeep.volume = 0.1;
+const success = new Audio("./assets/success.wav");
+success.volume = 0.1;
+const mistake = new Audio("./assets/mistake.wav");
+mistake.volume = 0.9;
 
 let minDec = document.getElementById("minDec");
 let minUni = document.getElementById("minUni");
@@ -51,8 +55,8 @@ class Game {
     }
     if (this.victoryPoints === 2) {
       this.timer.stopTimer();
-      bombDefusedAudio.play();
-      setInterval(() => {
+      setTimeout(() => {
+        bombDefusedAudio.play();
         const victory = document.querySelector(".victory");
         const h2 = document.querySelector(".victory h2");
         const gameDisplay = document.getElementById("game");
@@ -78,7 +82,7 @@ class Game {
       const handler = () => {
         if (e.correctWire) {
           this.victoryPoints++;
-
+          success.play();
           isCompletedDiv.classList.remove("not-completed");
           isCompletedDiv.classList.add("completed");
           wireDiv.removeEventListener("click", handler);
@@ -91,6 +95,7 @@ class Game {
           }
         } else {
           this.mistakes++;
+          mistake.play();
           mistakeCounter.innerText += "X";
           wireDiv.removeEventListener("click", handler);
           wireDiv.classList.remove("hoverable");
@@ -132,7 +137,7 @@ class Game {
       if (!this.buttonModule.stripCondition) {
         if (this.buttonModule.holdCounter < this.buttonModule.holdThreshold) {
           this.victoryPoints++;
-
+          success.play();
           isCompletedDiv.classList.remove("not-completed");
           isCompletedDiv.classList.add("completed");
           button.removeEventListener("mousedown", mouseDownHandler);
@@ -141,6 +146,7 @@ class Game {
           this.checkGameover();
         } else {
           this.mistakes++;
+          mistake.play();
           mistakeCounter.innerText += "X";
           this.checkGameover();
         }
@@ -152,7 +158,7 @@ class Game {
           this.buttonModule.holdCounter >= 100
         ) {
           this.victoryPoints++;
-
+          success.play();
           isCompletedDiv.classList.remove("not-completed");
           isCompletedDiv.classList.add("completed");
           button.removeEventListener("mousedown", mouseDownHandler);
@@ -161,6 +167,7 @@ class Game {
           this.checkGameover();
         } else {
           this.mistakes++;
+          mistake.play();
           mistakeCounter.innerText += "X";
           this.checkGameover();
         }
