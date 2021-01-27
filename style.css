@@ -36,7 +36,6 @@ body {
     display: block;
     position: relative;
     left: 60px;
-    bottom: 10px;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
@@ -140,8 +139,13 @@ body {
 }
 
 #game-back {
+    background-image: url("./assets/bomb-back.png");
+    background-size: cover;
+    width: 870px;
+    height: 750px;
     display: none;
-    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .loss {
@@ -243,28 +247,83 @@ body {
     right: 55px;
 }
 
+.batteries-container {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    left: 300px;
+    top: 250px;
+}
+
 .battery {
-    height: 200px;
-    width: 100px;
-    background: orange;
-    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    background-image: url("./assets/battery.png");
+    background-size: cover;
+}
+
+.serialnumber {
+    font-family: "alarm clock", sans-serif;
+    padding: 5px 10px;
+    position: relative;
+    left: 50px;
+    top: 235px;
+    border-radius: 10px;
+    background: rgba(225, 225, 225, 0.6);
+    color: rgba(105, 52, 52, 1);
+}
+
+.flip-btn {
+    padding: 10px;
+    background: rgba(105, 52, 52, 1);
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
+}
+
+.flip-btn:hover {
+    background: white;
+    color: rgba(105, 52, 52, 1);
+    border: 1px solid rgba(105, 52, 52, 1);
+}
+
+.back {
+    position: relative;
+    left: 100px;
 }
 
 .indicatorDiv {
     display: flex;
+    padding: 5px 20px;
+    width: 100px;
+    justify-content: space-around;
     align-items: center;
+    position: relative;
+    left: 175px;
+    background: rgba(105, 52, 52, 0.6);
+    color: rgba(225, 225, 225, 1);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .lit {
-    background: green;
+    background: url("./assets/lightbulb.png");
+    background-size: cover;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    margin: 0 5px;
+    width: 45px;
+    height: 60px;
 }
 
 .not-lit {
-    background: black;
+    background: url("./assets/lightbulb-off.png");
+    background-size: cover;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    margin: 0 5px;
+    width: 45px;
+    height: 60px;
 }

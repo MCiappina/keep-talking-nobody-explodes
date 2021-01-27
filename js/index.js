@@ -180,6 +180,7 @@ class Game {
         const backDisplay = document.getElementById("game-back");
         const serialNumber = this.wiresModule.serialNumber.toUpperCase();
         const serialNumberDiv = document.createElement("div");
+        serialNumberDiv.classList.add("serialnumber");
         serialNumberDiv.innerHTML = `<h2>${serialNumber}</h2>`;
         backDisplay.appendChild(serialNumberDiv);
     };
@@ -187,11 +188,14 @@ class Game {
     renderBatteries = () => {
         const backDisplay = document.getElementById("game-back");
         const batteries = this.buttonModule.batteries;
+        const allBatteriesDiv = document.createElement("div");
+        allBatteriesDiv.classList.add("batteries-container");
         for (let i = 0; i < batteries; i++) {
             const batteryDiv = document.createElement("div");
             batteryDiv.classList.add("battery");
-            backDisplay.appendChild(batteryDiv);
+            allBatteriesDiv.appendChild(batteryDiv);
         }
+        backDisplay.appendChild(allBatteriesDiv);
     };
 
     renderIndicator = () => {
@@ -200,6 +204,7 @@ class Game {
         }
         const backDisplay = document.getElementById("game-back");
         const indicatorDiv = document.createElement("div");
+        indicatorDiv.classList.add("indicatorDiv");
         const lightDiv = document.createElement("div");
         const light = this.buttonModule.indicator.isLit;
         if (light) {
@@ -256,13 +261,13 @@ const startGame = () => {
     menu.style.display = "none";
     gameDisplay.style.display = "flex";
 
-    const spinBtnList = document.querySelectorAll(".spin-btn");
+    const flipBtnList = document.querySelectorAll(".flip-btn");
 
-    spinBtnList.forEach((e) => {
+    flipBtnList.forEach((e) => {
         console.log(e);
         console.log(gameDisplay.style);
         e.onclick = () => {
-            console.log("spin-btn fired");
+            console.log("flip-btn fired");
             if (gameDisplay.style.display === "flex") {
                 gameDisplay.style.display = "none";
                 gameBack.style.display = "flex";
