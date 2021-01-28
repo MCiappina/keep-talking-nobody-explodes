@@ -1,7 +1,7 @@
 # Keep Talking and Nobody Explodes
 
 *Keep Talking and Nobody Explodes* is a game built in HTML, CSS and JavaScript
-> Click `[HERE](https://mciappina.github.io/keep-talking-nobody-explodes/)` to play!
+> Click [HERE](https://mciappina.github.io/keep-talking-nobody-explodes/) to play!
 
 
 # INSTALLATION
