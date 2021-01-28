@@ -1,423 +1,477 @@
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
 @font-face {
-  font-family: "alarm clock";
-  src: url("./assets/alarmclock.woff2") format("woff2"),
-    url("./assets/alarmclock.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "alarm clock";
+    src: url("./assets/alarmclock.woff2") format("woff2"), url("./assets/alarmclock.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Game Played";
-  src: url("./assets/GamePlayed.woff2") format("woff2"),
-    url("./assets/GamePlayed.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Game Played";
+    src: url("./assets/GamePlayed.woff2") format("woff2"), url("./assets/GamePlayed.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "The Godfather";
-  src: url("./assets/Godfather.woff2") format("woff2"),
-    url("./assets/Godfather.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: "The Godfather";
+    src: url("./assets/Godfather.woff2") format("woff2"), url("./assets/Godfather.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("./assets/dust2night.jpg");
-  background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./assets/dust2night.jpg");
+    background-size: cover;
 }
 
 .timer {
-  font-family: "alarm clock", sans-serif;
-  color: red;
-  font-size: 40px;
-  display: block;
-  position: relative;
-  left: 60px;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-family: "alarm clock", sans-serif;
+    color: red;
+    font-size: 40px;
+    display: block;
+    position: relative;
+    left: 60px;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .timer p {
-  display: block;
+    display: block;
 }
 
 .mistake-counter {
-  display: block;
-  position: relative;
-  top: 15px;
+    display: block;
+    position: relative;
+    top: 15px;
 }
 
 #menu {
-  background-image: url("./assets/dust2-pixel\ art.jpg");
-  background-size: cover;
-  border: 2px outset white;
-  border-radius: 15px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background-image: url("./assets/dust2-pixel\ art.jpg");
+    background-size: cover;
+    border: 2px outset white;
+    border-radius: 15px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #menu h1 {
-  font-family: "Game Played";
-  font-size: 40px;
-  width: 50%;
-  padding: 20px;
-  color: #693434;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 15px;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  text-align: center;
+    font-family: "Game Played";
+    font-size: 40px;
+    width: 50%;
+    padding: 20px;
+    color: #693434;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
 }
 
 #menu p {
-  font-family: sans-serif;
-  font-size: 15px;
-  width: 35%;
-  padding: 20px;
-  background: rgba(105, 52, 52, 0.6);
-  border-radius: 15px;
-  text-align: center;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 35%;
+    padding: 20px;
+    background: rgba(105, 52, 52, 0.6);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #menu a {
-  color: red;
+    color: red;
 }
 
 #start {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #start h2 {
-  font-family: sans-serif;
-  color: #693434;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 15px;
-  border-radius: 15px;
-  margin: 10px;
+    font-family: sans-serif;
+    color: #693434;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px;
 }
 
 #start input {
-  outline: none;
-  text-align: center;
-  width: 20%;
-  font-weight: bold;
-  font-size: 15px;
-  height: 35px;
-  margin: 0 auto 15px;
-  border-radius: 5px;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
+    outline: none;
+    text-align: center;
+    width: 20%;
+    font-weight: bold;
+    font-size: 15px;
+    height: 35px;
+    margin: 0 auto 15px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .start-btn {
-  padding: 20px;
-  font-family: sans-serif;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  border-radius: 10px;
-  background: rgba(105, 52, 52, 1);
-  font-size: 25px;
-  cursor: pointer;
+    padding: 20px;
+    font-family: sans-serif;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    border-radius: 10px;
+    background: rgba(105, 52, 52, 1);
+    font-size: 25px;
+    cursor: pointer;
 }
 
 #game {
-  background-image: url("./assets/bomb-front.png");
-  background-size: cover;
-  width: 870px;
-  height: 750px;
-  display: none;
-  justify-content: space-around;
-  align-items: center;
+    background-image: url("./assets/bomb-front.png");
+    background-size: cover;
+    width: 870px;
+    height: 750px;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #game-back {
-  background-image: url("./assets/bomb-back.png");
-  background-size: cover;
-  width: 870px;
-  height: 750px;
-  display: none;
-  align-items: center;
-  flex-wrap: wrap;
+    background-image: url("./assets/bomb-back.png");
+    background-size: cover;
+    width: 870px;
+    height: 750px;
+    display: none;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .blue {
-  background: blue;
+    background: blue;
 }
 
 .yellow {
-  background: yellow;
+    background: yellow;
 }
 
 .red {
-  background: red;
+    background: red;
 }
 
 .black {
-  background: black;
+    background: black;
 }
 
 .white {
-  background: white;
+    background: white;
 }
 
 .wire {
-  border: 5px solid black;
-  width: 200px;
-  height: 15px;
-  border-radius: 15px;
-  margin: 10px 0;
+    width: 190px;
+    height: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+    display: flex;
 }
 
 .first-half {
-  position: absolute;
+    width: 105px;
+    height: 15px;
+    border-top: 5px solid black;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+    border-right: none;
+    border-radius: 15px 0 0 15px;
+    margin: -5px 0;
 }
 
-.transform1 {
+.cut-left {
+    transform-origin: left 0;
+    transform: rotate(2deg);
 }
 
-.transform2 {
+.cut-right {
+    transform-origin: right 0;
+    transform: rotate(2deg);
 }
 
 .second-half {
-  position: absolute;
+    width: 105px;
+    height: 15px;
+    border-top: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+    margin: -5px 0;
 }
 
 .not-completed {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid black;
-  background: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: red;
 }
 
 .completed {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid black;
-  background: green;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: green;
 }
 
 .button-module {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .button {
-  border: 5px solid black;
-  font-size: 15px;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  right: 55px;
+    border: 5px solid black;
+    font-size: 15px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 55px;
 }
 
+.hoverable-first-half {
+    border-top: 5px solid orange;
+    border-left: 5px solid orange;
+    border-bottom: 5px solid orange;
+}
+
+
+/* .hoverable-first-half:hover+.hoverable-second-half {
+    border-top: 5px solid orange;
+    border-right: 5px solid orange;
+    border-bottom: 5px solid orange;
+} */
+
+.hoverable-second-half {
+    border-top: 5px solid orange;
+    border-right: 5px solid orange;
+    border-bottom: 5px solid orange;
+}
+
+
+/* .hoverable-second-half:hover+.hoverable-first-half {
+    border-top: 5px solid orange;
+    border-left: 5px solid orange;
+    border-bottom: 5px solid orange;
+} */
+
+
+/* .hoverable-wire:first-child:hover {
+    border-top: 5px solid orange;
+    border-left: 5px solid orange;
+    border-bottom: 5px solid orange;
+}
+
+.hoverable-wire:last-child:hover {
+    border-top: 5px solid orange;
+    border-right: 5px solid orange;
+    border-bottom: 5px solid orange;
+} */
+
 .hoverable:hover {
-  border: 5px solid orange;
-  cursor: pointer;
+    border: 5px solid orange;
+    cursor: pointer;
 }
 
 .strip {
-  border: 1px solid black;
-  height: 20px;
-  width: 100px;
-  margin-top: 20px;
-  position: relative;
-  right: 55px;
+    border: 1px solid black;
+    height: 20px;
+    width: 100px;
+    margin-top: 20px;
+    position: relative;
+    right: 55px;
 }
 
 .batteries-container {
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-  left: 300px;
-  top: 250px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    left: 300px;
+    top: 250px;
 }
 
 .battery {
-  height: 50px;
-  width: 50px;
-  background-image: url("./assets/battery.png");
-  background-size: cover;
+    height: 50px;
+    width: 50px;
+    background-image: url("./assets/battery.png");
+    background-size: cover;
 }
 
 .serialnumber {
-  font-family: "alarm clock", sans-serif;
-  padding: 5px 10px;
-  position: relative;
-  left: 50px;
-  top: 235px;
-  border-radius: 10px;
-  background: rgba(225, 225, 225, 0.6);
-  color: rgba(105, 52, 52, 1);
+    font-family: "alarm clock", sans-serif;
+    padding: 5px 10px;
+    position: relative;
+    left: 50px;
+    top: 235px;
+    border-radius: 10px;
+    background: rgba(225, 225, 225, 0.6);
+    color: rgba(105, 52, 52, 1);
 }
 
 .flip-btn {
-  padding: 10px;
-  background: rgba(105, 52, 52, 1);
-  font-family: sans-serif;
-  font-weight: bold;
-  color: white;
-  border-radius: 15px;
-  border: 1px solid white;
-  cursor: pointer;
-  outline: none;
-  font-size: 12px;
+    padding: 10px;
+    background: rgba(105, 52, 52, 1);
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+    cursor: pointer;
+    outline: none;
+    font-size: 12px;
 }
 
 .flip-btn:hover {
-  background: white;
-  color: rgba(105, 52, 52, 1);
-  border: 1px solid rgba(105, 52, 52, 1);
+    background: white;
+    color: rgba(105, 52, 52, 1);
+    border: 1px solid rgba(105, 52, 52, 1);
 }
 
 .back {
-  position: relative;
-  left: 100px;
+    position: relative;
+    left: 100px;
 }
 
 .indicatorDiv {
-  display: flex;
-  padding: 5px 20px;
-  width: 100px;
-  border-radius: 10px;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
-  left: 175px;
-  background: rgba(105, 52, 52, 0.6);
-  color: rgba(225, 225, 225, 1);
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    display: flex;
+    padding: 5px 20px;
+    width: 100px;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    left: 175px;
+    background: rgba(105, 52, 52, 0.6);
+    color: rgba(225, 225, 225, 1);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .lit {
-  background: url("./assets/lightbulb.png");
-  background-size: cover;
-  border-radius: 50%;
-  margin: 0 5px;
-  width: 45px;
-  height: 60px;
+    background: url("./assets/lightbulb.png");
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 5px;
+    width: 45px;
+    height: 60px;
 }
 
 .not-lit {
-  background: url("./assets/lightbulb-off.png");
-  background-size: cover;
-  border-radius: 50%;
-  margin: 0 5px;
-  width: 45px;
-  height: 60px;
+    background: url("./assets/lightbulb-off.png");
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 5px;
+    width: 45px;
+    height: 60px;
 }
 
 .loss {
-  display: none;
-  height: 100%;
-  width: 100%;
-  background: black;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .victory {
-  height: 40vh;
-  width: 30vw;
-  background: rgba(105, 52, 52, 1);
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  animation: fadeInVictory ease 3s;
-  animation-fill-mode: forwards;
-  text-align: center;
-  padding: 40px 40px;
-  font-family: "Game Played";
+    height: 40vh;
+    width: 30vw;
+    background: rgba(105, 52, 52, 1);
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInVictory ease 3s;
+    animation-fill-mode: forwards;
+    text-align: center;
+    padding: 40px 40px;
+    font-family: "Game Played";
 }
 
 .life-quote {
-  font-family: "Cedarville Cursive", cursive;
-  font-size: 24px;
-  font-weight: 100;
-  width: 70%;
-  text-align: center;
-  color: white;
+    font-family: "Cedarville Cursive", cursive;
+    font-size: 24px;
+    font-weight: 100;
+    width: 70%;
+    text-align: center;
+    color: white;
 }
 
 .time-remaining {
-  color: rgba(105, 52, 52, 1);
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  width: 80%;
+    color: rgba(105, 52, 52, 1);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    width: 80%;
 }
 
 .death-quote {
-  font-family: "The Godfather";
-  font-size: 60px;
-  font-weight: 100;
-  width: 50%;
-  text-align: center;
-  color: white;
+    font-family: "The Godfather";
+    font-size: 60px;
+    font-weight: 100;
+    width: 50%;
+    text-align: center;
+    color: white;
 }
 
 .death {
-  opacity: 0;
-  animation: fadeIn ease 10s;
-  animation-fill-mode: forwards;
+    opacity: 0;
+    animation: fadeIn ease 10s;
+    animation-fill-mode: forwards;
 }
 
 .play-again {
-  padding: 20px;
-  font-weight: bold;
-  cursor: pointer;
+    padding: 20px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInVictory {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.9;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.9;
+    }
 }

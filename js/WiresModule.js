@@ -1,136 +1,136 @@
 const colors = ["blue", "red", "yellow", "black", "white"];
 
 class WiresModule {
-  constructor(numberOfWires, serialNumber) {
-    this.numberOfWires = numberOfWires;
-    this.wires = [];
-    this.serialNumber = serialNumber;
-  }
+    constructor(numberOfWires, serialNumber) {
+        this.numberOfWires = numberOfWires;
+        this.wires = [];
+        this.serialNumber = serialNumber;
+    }
 
-  makeWires() {
-    for (let i = 1; i <= this.numberOfWires; i++) {
-      let randomIndex = Math.floor(Math.random() * colors.length);
-      let randomColor = colors[randomIndex];
-      let wire = new Wire(randomColor);
-      this.wires.push(wire);
-    }
-  }
-  setCorrectWire() {
-    let copyArray = [...this.wires];
-    switch (this.numberOfWires) {
-      case 3:
-        if (noWiresOfColor(copyArray, "red")) {
-          this.wires[1].correctWire = true;
-        } else if (isLastWireColor(copyArray, "white")) {
-          this.wires[2].correctWire = true;
-        } else if (has2WiresOfColor(copyArray, "blue")) {
-          let indexOfLastBlue = copyArray
-            .map((e) => e.color)
-            .lastIndexOf("blue");
-          this.wires[indexOfLastBlue].correctWire = true;
-        } else {
-          this.wires[2].correctWire = true;
-        }
-        break;
-      case 4:
-        if (
-          has2WiresOfColor(copyArray, "red") &&
-          isSerialNumberOdd(this.serialNumber)
-        ) {
-          let indexOfLastRed = copyArray.map((e) => e.color).lastIndexOf("red");
-          this.wires[indexOfLastRed].correctWire = true;
-        } else if (
-          isLastWireColor(copyArray, "yellow") &&
-          noWiresOfColor(copyArray, "red")
-        ) {
-          this.wires[0].correctWire = true;
-        } else if (hasOnlyOneOfColor(copyArray, "blue")) {
-          this.wires[0].correctWire = true;
-        } else if (has2WiresOfColor(copyArray, "yellow")) {
-          this.wires[3].correctWire = true;
-        } else {
-          this.wires[1].correctWire = true;
-        }
-        break;
-      case 5:
-        if (
-          isLastWireColor(copyArray, "black") &&
-          isSerialNumberOdd(this.serialNumber)
-        ) {
-          this.wires[3].correctWire = true;
-        } else if (
-          hasOnlyOneOfColor(copyArray, "red") &&
-          has2WiresOfColor(copyArray, "yellow")
-        ) {
-          this.wires[0].correctWire = true;
-        } else if (noWiresOfColor(copyArray, "black")) {
-          this.wires[1].correctWire = true;
-        } else {
-          this.wires[0].correctWire = true;
-        }
-        break;
-      case 6:
-        if (
-          noWiresOfColor(copyArray, "yellow") &&
-          isSerialNumberOdd(this.serialNumber)
-        ) {
-          this.wires[2].correctWire = true;
-        } else if (
-          hasOnlyOneOfColor(copyArray, "yellow") &&
-          has2WiresOfColor(copyArray, "white")
-        ) {
-          this.wires[3].correctWire = true;
-        } else if (noWiresOfColor(copyArray, "red")) {
-          this.wires[5].correctWire = true;
-        } else {
-          this.wires[3].correctWire = true;
+    makeWires() {
+        for (let i = 1; i <= this.numberOfWires; i++) {
+            let randomIndex = Math.floor(Math.random() * colors.length);
+            let randomColor = colors[randomIndex];
+            let wire = new Wire(randomColor);
+            this.wires.push(wire);
         }
     }
-  }
+    setCorrectWire() {
+        let copyArray = [...this.wires];
+        switch (this.numberOfWires) {
+            case 3:
+                if (noWiresOfColor(copyArray, "red")) {
+                    this.wires[1].correctWire = true;
+                } else if (isLastWireColor(copyArray, "white")) {
+                    this.wires[2].correctWire = true;
+                } else if (has2WiresOfColor(copyArray, "blue")) {
+                    let indexOfLastBlue = copyArray
+                        .map((e) => e.color)
+                        .lastIndexOf("blue");
+                    this.wires[indexOfLastBlue].correctWire = true;
+                } else {
+                    this.wires[2].correctWire = true;
+                }
+                break;
+            case 4:
+                if (
+                    has2WiresOfColor(copyArray, "red") &&
+                    isSerialNumberOdd(this.serialNumber)
+                ) {
+                    let indexOfLastRed = copyArray.map((e) => e.color).lastIndexOf("red");
+                    this.wires[indexOfLastRed].correctWire = true;
+                } else if (
+                    isLastWireColor(copyArray, "yellow") &&
+                    noWiresOfColor(copyArray, "red")
+                ) {
+                    this.wires[0].correctWire = true;
+                } else if (hasOnlyOneOfColor(copyArray, "blue")) {
+                    this.wires[0].correctWire = true;
+                } else if (has2WiresOfColor(copyArray, "yellow")) {
+                    this.wires[3].correctWire = true;
+                } else {
+                    this.wires[1].correctWire = true;
+                }
+                break;
+            case 5:
+                if (
+                    isLastWireColor(copyArray, "black") &&
+                    isSerialNumberOdd(this.serialNumber)
+                ) {
+                    this.wires[3].correctWire = true;
+                } else if (
+                    hasOnlyOneOfColor(copyArray, "red") &&
+                    has2WiresOfColor(copyArray, "yellow")
+                ) {
+                    this.wires[0].correctWire = true;
+                } else if (noWiresOfColor(copyArray, "black")) {
+                    this.wires[1].correctWire = true;
+                } else {
+                    this.wires[0].correctWire = true;
+                }
+                break;
+            case 6:
+                if (
+                    noWiresOfColor(copyArray, "yellow") &&
+                    isSerialNumberOdd(this.serialNumber)
+                ) {
+                    this.wires[2].correctWire = true;
+                } else if (
+                    hasOnlyOneOfColor(copyArray, "yellow") &&
+                    has2WiresOfColor(copyArray, "white")
+                ) {
+                    this.wires[3].correctWire = true;
+                } else if (noWiresOfColor(copyArray, "red")) {
+                    this.wires[5].correctWire = true;
+                } else {
+                    this.wires[3].correctWire = true;
+                }
+        }
+    }
 }
 
 class Wire {
-  constructor(color) {
-    this.color = color;
-    this.correctWire = false;
-  }
-  cutWire() {
-    return this.correctWire;
-  }
-  wireAsDiv() {
-    let actualWire = document.createElement("div");
-    actualWire.classList.add(`${this.color}`);
-    actualWire.classList.add("wire");
-    actualWire.classList.add("hoverable");
-    let firstHalf = document.createElement("div");
-    let secondHalf = document.createElement("div");
-    firstHalf.classList.add("first-half");
-    secondHalf.classList.add("second-half");
-    actualWire.appendChild(firstHalf);
-    actualWire.appendChild(secondHalf);
-    return actualWire;
-  }
+    constructor(color) {
+        this.color = color;
+        this.correctWire = false;
+    }
+    cutWire() {
+        return this.correctWire;
+    }
+    wireAsDiv() {
+        let actualWire = document.createElement("div");
+        actualWire.classList.add("wire");
+        let firstHalf = document.createElement("div");
+        let secondHalf = document.createElement("div");
+        firstHalf.classList.add("first-half");
+        secondHalf.classList.add("second-half");
+        firstHalf.classList.add(this.color);
+        secondHalf.classList.add(this.color);
+        actualWire.appendChild(firstHalf);
+        actualWire.appendChild(secondHalf);
+        return actualWire;
+    }
 }
 
 const has2WiresOfColor = (array, color) => {
-  return (
-    array.map((e) => e.color).indexOf(color) !==
-    array.map((e) => e.color).lastIndexOf(color)
-  );
+    return (
+        array.map((e) => e.color).indexOf(color) !==
+        array.map((e) => e.color).lastIndexOf(color)
+    );
 };
 
 const isSerialNumberOdd = (serialNumber) => {
-  return serialNumber[serialNumber.length - 1] % 2 !== 0;
+    return serialNumber[serialNumber.length - 1] % 2 !== 0;
 };
 
 const noWiresOfColor = (array, color) => {
-  return array.every((e) => e.color !== color);
+    return array.every((e) => e.color !== color);
 };
 
 const hasOnlyOneOfColor = (array, color) => {
-  return array.filter((e) => e.color === color).length == 1;
+    return array.filter((e) => e.color === color).length == 1;
 };
 
 const isLastWireColor = (array, color) => {
-  return array[array.length - 1].color === color;
+    return array[array.length - 1].color === color;
 };
