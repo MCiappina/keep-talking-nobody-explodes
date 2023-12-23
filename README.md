@@ -3,7 +3,9 @@
 *Keep Talking and Nobody Explodes* is a game built in HTML, CSS and JavaScript
 > Click [HERE](https://mciappina.github.io/keep-talking-nobody-explodes/) to play!
 > Check the [Presentation](https://docs.google.com/presentation/d/1H0o9tXjwhKKGm8l48cz97vPWjG7dZkOVHITexiCbouo/edit?usp=sharing)!
-
+>
+> ![image](https://github.com/MCiappina/keep-talking-nobody-explodes/assets/46383288/1122d4cd-978e-47b9-87d6-454cd166cf9c)
+![image](https://github.com/MCiappina/keep-talking-nobody-explodes/assets/46383288/dfcb2f40-ca19-4ba7-869e-40e730d10b0b)
 
 # INSTALLATION
 -   Clone or download this project
